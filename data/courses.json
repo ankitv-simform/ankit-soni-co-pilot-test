@@ -1,0 +1,41 @@
+{
+  "b8b127df-cea6-4cbe-881d-f3f6f377ae6f": {
+    "id": "b8b127df-cea6-4cbe-881d-f3f6f377ae6f",
+    "title": "Complete Node.js Developer Course",
+    "description": "Learn Node.js by building real-world applications with Node, Express, MongoDB, and more",
+    "instructor": "John Doe",
+    "duration": 40,
+    "price": 99.99,
+    "category": "Programming",
+    "level": "intermediate",
+    "priority": "medium",
+    "createdAt": "2026-02-20T10:19:53.778Z",
+    "updatedAt": "2026-02-20T10:19:53.778Z"
+  },
+  "7d949ce4-8320-4306-a50e-caedb35a263e": {
+    "id": "7d949ce4-8320-4306-a50e-caedb35a263e",
+    "title": "Advanced TypeScript Patterns",
+    "description": "Master advanced TypeScript patterns, generics, decorators, and design patterns for enterprise applications",
+    "instructor": "Alex Johnson",
+    "duration": 25,
+    "price": 129.99,
+    "category": "Programming",
+    "level": "advanced",
+    "priority": "medium",
+    "createdAt": "2026-02-20T10:21:11.160Z",
+    "updatedAt": "2026-02-20T10:21:11.160Z"
+  },
+  "65146894-f436-4d80-914e-966fd1c2d28d": {
+    "id": "65146894-f436-4d80-914e-966fd1c2d28d",
+    "title": "Rea",
+    "description": "Learn React from scratch with hands-on projects and build modern web applications",
+    "instructor": "Jane Smith",
+    "duration": 30,
+    "price": 89.99,
+    "category": "Web Development",
+    "level": "beginner",
+    "priority": "medium",
+    "createdAt": "2026-02-20T10:44:57.971Z",
+    "updatedAt": "2026-02-20T10:44:57.971Z"
+  }
+}

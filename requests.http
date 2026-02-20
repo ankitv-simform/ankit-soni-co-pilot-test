@@ -1,0 +1,281 @@
+### Course Management API - Test Requests
+### Base URL: http://localhost:3000
+
+### Health Check
+GET http://localhost:3000/api/health HTTP/1.1
+
+###
+
+### 1. Create a New Course
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Complete Node.js Developer Course",
+  "description": "Learn Node.js by building real-world applications with Node, Express, MongoDB, and more",
+  "instructor": "John Doe",
+  "duration": 40,
+  "price": 99.99,
+  "category": "Programming",
+  "level": "intermediate"
+}
+
+###
+
+### 2. Create Another Course
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "React Masterclass",
+  "description": "Learn React from scratch with hands-on projects and build modern web applications",
+  "instructor": "Jane Smith",
+  "duration": 30,
+  "price": 89.99,
+  "category": "Web Development",
+  "level": "beginner"
+}
+
+###
+
+### 3. Create Advanced Course
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Advanced TypeScript Patterns",
+  "description": "Master advanced TypeScript patterns, generics, decorators, and design patterns for enterprise applications",
+  "instructor": "Alex Johnson",
+  "duration": 25,
+  "price": 129.99,
+  "category": "Programming",
+  "level": "advanced"
+}
+
+###
+
+### 4. Get All Courses
+GET http://localhost:3000/api/courses HTTP/1.1
+
+###
+
+### 5. Get Course by ID
+# Replace {course-id} with an actual course ID from the create response
+GET http://localhost:3000/api/courses/{course-id} HTTP/1.1
+
+###
+
+### 6. Update Course (Partial Update)
+# Replace {course-id} with an actual course ID
+PUT http://localhost:3000/api/courses/{course-id} HTTP/1.1
+Content-Type: application/json
+
+{
+  "price": 79.99,
+  "level": "advanced"
+}
+
+###
+
+### 7. Update Course (Full Update)
+# Replace {course-id} with an actual course ID
+PUT http://localhost:3000/api/courses/{course-id} HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Complete Node.js Developer Course 2026",
+  "description": "Updated: Learn Node.js by building real-world applications with Node, Express, MongoDB, GraphQL and more",
+  "instructor": "John Doe",
+  "duration": 45,
+  "price": 109.99,
+  "category": "Programming",
+  "level": "advanced"
+}
+
+###
+
+### 8. Delete Course
+# Replace {course-id} with an actual course ID
+DELETE http://localhost:3000/api/courses/{course-id} HTTP/1.1
+
+###
+
+### ===============================================
+### Error Testing Scenarios
+### ===============================================
+
+### 9. Create Course - Missing Required Fields (Should return 400)
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Incomplete Course"
+}
+
+###
+
+### 10. Create Course - Invalid Data Types (Should return 400)
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Invalid Course",
+  "description": "This course has invalid data types",
+  "instructor": "Test Instructor",
+  "duration": "not-a-number",
+  "price": "free",
+  "category": "Testing",
+  "level": "beginner"
+}
+
+###
+
+### 11. Create Course - Invalid Level (Should return 400)
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Invalid Level Course",
+  "description": "This course has an invalid level value that should fail validation",
+  "instructor": "Test Instructor",
+  "duration": 20,
+  "price": 49.99,
+  "category": "Testing",
+  "level": "expert"
+}
+
+###
+
+### 12. Create Course - Title Too Short (Should return 400)
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "AB",
+  "description": "This course has a title that is too short (less than 3 characters)",
+  "instructor": "Test Instructor",
+  "duration": 20,
+  "price": 49.99,
+  "category": "Testing",
+  "level": "beginner"
+}
+
+###
+
+### 13. Create Course - Description Too Short (Should return 400)
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Valid Title",
+  "description": "Short",
+  "instructor": "Test Instructor",
+  "duration": 20,
+  "price": 49.99,
+  "category": "Testing",
+  "level": "beginner"
+}
+
+###
+
+### 14. Create Course - Negative Price (Should return 400)
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Negative Price Course",
+  "description": "This course has a negative price which should fail validation",
+  "instructor": "Test Instructor",
+  "duration": 20,
+  "price": -10.99,
+  "category": "Testing",
+  "level": "beginner"
+}
+
+###
+
+### 15. Get Course - Invalid ID Format (Should return 400)
+GET http://localhost:3000/api/courses/invalid-uuid-format HTTP/1.1
+
+###
+
+### 16. Get Course - Non-existent ID (Should return 404)
+GET http://localhost:3000/api/courses/00000000-0000-0000-0000-000000000000 HTTP/1.1
+
+###
+
+### 17. Update Course - Invalid ID (Should return 404)
+PUT http://localhost:3000/api/courses/00000000-0000-0000-0000-000000000000 HTTP/1.1
+Content-Type: application/json
+
+{
+  "price": 99.99
+}
+
+###
+
+### 18. Update Course - No Fields Provided (Should return 400)
+# Replace {course-id} with an actual course ID
+PUT http://localhost:3000/api/courses/{course-id} HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+
+### 19. Delete Course - Non-existent ID (Should return 404)
+DELETE http://localhost:3000/api/courses/00000000-0000-0000-0000-000000000000 HTTP/1.1
+
+###
+
+### ===============================================
+### Additional Valid Test Cases
+### ===============================================
+
+### 20. Create Course - Minimum Valid Duration (0.5 hours)
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Quick Tutorial",
+  "description": "A quick 30-minute tutorial covering the basics of the topic",
+  "instructor": "Quick Teacher",
+  "duration": 0.5,
+  "price": 9.99,
+  "category": "Quick Learning",
+  "level": "beginner"
+}
+
+###
+
+### 21. Create Course - Free Course (Price = 0)
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Free Introduction Course",
+  "description": "A completely free introductory course for beginners to get started with the topic",
+  "instructor": "Community Teacher",
+  "duration": 5,
+  "price": 0,
+  "category": "Free Courses",
+  "level": "beginner"
+}
+
+###
+
+### 22. Create Course - Maximum Duration
+POST http://localhost:3000/api/courses HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Comprehensive Master Program",
+  "description": "An extensive master program covering every aspect of the subject in extreme detail with practical projects",
+  "instructor": "Master Instructor",
+  "duration": 500,
+  "price": 999.99,
+  "category": "Master Programs",
+  "level": "advanced"
+}
+
+###
